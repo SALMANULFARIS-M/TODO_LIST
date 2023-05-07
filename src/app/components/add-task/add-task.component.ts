@@ -11,7 +11,7 @@ import { Subscription } from "rxjs";
 })
 export class AddTaskComponent {
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
-  text?: string;
+  content?: string;
   day?: string;
   reminder: boolean = false;
   showAddTask?: boolean;
@@ -24,7 +24,7 @@ export class AddTaskComponent {
 
 
   onSubmit() {
-    if (!this.text) {
+    if (!this.content) {
       alert('PLEASE ADD A TASK');
       return
     } else if (!this.day) {
@@ -32,13 +32,13 @@ export class AddTaskComponent {
       return
     }
     const newTask: Task = {
-      text: this.text,
+      text: this.content,
       day: this.day,
       reminder: this.reminder
     }
     this.onAddTask.emit(newTask);
     //@todo - emit event
-    this.text,
+    this.content,
       this.day,
       this.reminder = false;
   }
